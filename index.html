@@ -45,20 +45,35 @@
 	
 	
 	<script>
-		
 		var list1 = [];
 		var list2 = [];
 		var list3 = [];
 		var list4 = [];
 		var n = 1;
 		var x = 0;
-		function AddRow(){
+
+		function AddRow() {
+			var email = document.getElementById("email").value;
+
+			
+			// Check for duplicate email
+			if (list3.includes(email)) {
+				alert("Duplicate email address found. Please use a different email.");
+				return;
+			}
+			// Validate email format
+			var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailPattern.test(email)) {
+				alert("Please enter a valid email address.");
+				return;
+			}
+
 
 			var AddRown = document.getElementById('show');
 			var NewRow = AddRown.insertRow(n);
 
 			list1[x] = document.getElementById("fullname").value;
-			list2[x] = document.getElementById("Employee Id").value;
+			list2[x] = document.getElementById("EmployeeId").value;
 			list3[x] = document.getElementById("email").value;
 			list4[x] = document.getElementById("age").value;
 
@@ -74,12 +89,13 @@
 			n++;
 			x++;
 		}
+
 		function ClearInputs() {
-            document.getElementById("fullname").value = "";
-            document.getElementById("Employee Id").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("age").value = "";
-        }
+			document.getElementById("fullname").value = "";
+			document.getElementById("EmployeeId").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("age").value = "";
+		}
 
 	</script>
 </body>
