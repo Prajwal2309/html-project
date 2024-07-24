@@ -1,58 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
-    <link rel="stylesheet" href="style.css">
+	<title>Project 1</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <table border="4">
-        <tr>
-            <th>Full Name</th>
-            <td><input type="text" name="fullname" id="fullname"></td>
-        </tr>
-        <tr>
-            <th>Employee Id</th>
-            <td><input type="text" name="EmployeeId" id="EmployeeId"></td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td><input type="text" name="email" id="email"></td>
-        </tr>
-        <tr>
-            <th>Age</th>
-            <td><input type="text" name="age" id="age"></td>
-        </tr>
-        <tr id="btna">
-            <td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow();ClearInputs()"></td>
-        </tr>
-    </table>
 
-    <table id="show" border="4">
-        <thead>
-            <tr>
-                <th>Full Name</th>
-                <th>Employee Id</th>
-                <th>Email</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows will be added here -->
-        </tbody>
-    </table>
+	
+		<table  border="4">
+			
+			<tr>
+			<th>Full Name</th>
+			<td><input type="text" name="fullname" id="fullname"></td>
+			</tr>
+			
+			<tbody>
+			<tr>
+			<th>Employee Id</th>
+			<td><input type="text" name="Employee Id" id="Employee Id"></td>
+			</tr>
+			<tr>
+			<th>Email</th>
+			<td><input type="text" name="email" id="email"></td>
+			</tr>
+			<tr>
+			<th>Age</th>
+			<td><input type="text" name="age" id="age"></td>
+			</tr>
+			<tr id="btna">
+			<td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow();ClearInputs()"></td>
+			</tr>
+			</tbody>
+		</table>
 
-    <script>
-        var list1 = [];
-        var list2 = [];
-        var list3 = [];
-        var list4 = [];
-        var n = 1;
-        var x = 0;
+		<table  id="show" border="4">
+			<thead>
+			<tr>
+		    <th>Full Name</th>
+			<th>EmployeeId</th>
+			<th>Email</th>
+			<th>Age</th>
+			</tr>
+			</thead>
+		</table>
+	
+	
+	<script>
+		
+		var list1 = [];
+		var list2 = [];
+		var list3 = [];
+		var list4 = [];
+		var n = 1;
+		var x = 0;
 
-        function AddRow() {
-            var email = document.getElementById("email").value;
+		function AddRow(){
+			var email = document.getElementById("email").value;
+			  // Validate email format
+			  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			  if (!emailPattern.test(email)) {
+				  alert("Please enter a valid email address.");
+				  return;
+			  }
+  
 
             // Check for duplicate email
             if (list3.includes(email)) {
@@ -60,40 +69,34 @@
                 return;
             }
             
-            // Validate email format
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
 
-            var AddRown = document.getElementById('show').getElementsByTagName('tbody')[0];
-            var NewRow = AddRown.insertRow(n);
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
 
-            list1[x] = document.getElementById("fullname").value;
-            list2[x] = document.getElementById("EmployeeId").value;
-            list3[x] = document.getElementById("email").value;
-            list4[x] = document.getElementById("age").value;
+			list1[x] = document.getElementById("fullname").value;
+			list2[x] = document.getElementById("Employee Id").value;
+			list3[x] = document.getElementById("email").value;
+			list4[x] = document.getElementById("age").value;
 
-            var c1 = NewRow.insertCell(0);
-            var c2 = NewRow.insertCell(1);
-            var c3 = NewRow.insertCell(2);
-            var c4 = NewRow.insertCell(3);
-            c1.innerHTML = list1[x];
-            c2.innerHTML = list2[x];
-            c3.innerHTML = list3[x];
-            c4.innerHTML = list4[x];
+			var c1 = NewRow.insertCell(0);
+			var c2 = NewRow.insertCell(1);
+			var c3 = NewRow.insertCell(2);
+			var c4 = NewRow.insertCell(3);
+			c1.innerHTML = list1[x];
+			c2.innerHTML = list2[x];
+			c3.innerHTML = list3[x];
+			c4.innerHTML = list4[x];
 
-            n++;
-            x++;
-        }
-
-        function ClearInputs() {
+			n++;
+			x++;
+		}
+		function ClearInputs() {
             document.getElementById("fullname").value = "";
-            document.getElementById("EmployeeId").value = "";
+            document.getElementById("Employee Id").value = "";
             document.getElementById("email").value = "";
             document.getElementById("age").value = "";
         }
-    </script>
+
+	</script>
 </body>
 </html>
